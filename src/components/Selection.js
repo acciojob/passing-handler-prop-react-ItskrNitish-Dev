@@ -2,19 +2,23 @@ import React, { useState } from "react";
 
 const Selection = ({ applyColor }) => {
   const [selectionStyle, setSelectionStyle] = useState({
-    background: "#ffffff",
+    background: "",
   });
 
   const handleClick = () => {
-    applyColor(setSelectionStyle);
+    applyColor((selectedColor) => {
+      setSelectionStyle({
+        background: selectedColor.background,
+      });
+    });
   };
 
   return (
     <div
       className="fix-box"
       style={{ backgroundColor: selectionStyle.background }}
-      onClick={handleClick} >
-    </div>
+      onClick={handleClick}
+    ></div>
   );
 };
 
